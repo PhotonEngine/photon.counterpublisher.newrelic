@@ -1,5 +1,7 @@
 # Photon Counters plugin for NewRelic
 
+[Read more details here](https://doc.photonengine.com/en-us/server/current/performance/photon-counters#_usage_newrelic).
+
 ## How To Use
 
 1. Copy content of this repository to the root directory of your Photon Server SDK. Current tested version is v4-0-29-11263.
