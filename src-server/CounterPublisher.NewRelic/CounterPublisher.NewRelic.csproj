@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <AssemblyName>CounterPublisher.NewRelic</AssemblyName>
+        <RootNamespace>CounterPublisher.NewRelic</RootNamespace>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <OutputType>Library</OutputType>
+        <TargetFrameworks>net452</TargetFrameworks>
+        <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net452|AnyCPU'">
+      <OutputPath>bin\</OutputPath>
+      <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+      <WarningsAsErrors />
+      <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <NoWarn />
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="log4net" Version="2.0.8" />
+      <PackageReference Include="NewRelic.Platform.SDK" Version="1.0.0.1" />
+    </ItemGroup>
+  
+    <ItemGroup>
+      <Reference Include="ExitGames.Logging.Log4Net">
+        <HintPath>..\..\lib\ExitGames.Logging.Log4Net.dll</HintPath>
+      </Reference>
+      <Reference Include="ExitGamesLibs">
+        <HintPath>..\..\lib\ExitGamesLibs.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+  
+    <ItemGroup>
+      <Reference Include="System.Configuration" />
+    </ItemGroup>
+  
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+      <Exec Command="xcopy /Y /Q &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(ProjectDir)..\..\deploy\CounterPublisher\bin\&quot;&#xD;&#xA;xcopy /Y /Q &quot;$(TargetDir)$(TargetName).dll.config&quot; &quot;$(ProjectDir)..\..\deploy\CounterPublisher\bin\&quot;&#xD;&#xA;xcopy /Y /Q &quot;$(TargetDir)NewRelic.Platform.Sdk.dll&quot; &quot;$(ProjectDir)..\..\deploy\CounterPublisher\bin\&quot;" />
+    </Target>
+  
+</Project>

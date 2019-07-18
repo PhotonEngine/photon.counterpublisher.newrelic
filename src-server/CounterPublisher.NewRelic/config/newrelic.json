@@ -1,0 +1,5 @@
+{
+  "log_level": "info",
+  "log_filename": "CounterPublisher.NewRelic.Plugin.log",
+  "log_file_path": "../log"
+}
