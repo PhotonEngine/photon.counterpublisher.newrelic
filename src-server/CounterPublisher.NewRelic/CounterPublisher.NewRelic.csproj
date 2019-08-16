@@ -14,10 +14,6 @@
       <DefineConstants>DEBUG;TRACE</DefineConstants>
       <NoWarn />
     </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="log4net" Version="2.0.8" />
-      <PackageReference Include="NewRelic.Platform.SDK" Version="1.0.0.1" />
-    </ItemGroup>
   
     <ItemGroup>
       <Reference Include="ExitGames.Logging.Log4Net">
@@ -25,6 +21,15 @@
       </Reference>
       <Reference Include="ExitGamesLibs">
         <HintPath>..\..\lib\ExitGamesLibs.dll</HintPath>
+      </Reference>
+      <Reference Include="NewRelic.Platform.Sdk">
+        <HintPath>..\..\lib\NewRelic.Platform.SDK\NewRelic.Platform.Sdk.dll</HintPath>
+      </Reference>
+      <Reference Include="Newtonsoft.Json">
+        <HintPath>..\..\lib\NewRelic.Platform.SDK\Newtonsoft.Json.dll</HintPath>
+      </Reference>
+      <Reference Include="NLog">
+        <HintPath>..\..\lib\NewRelic.Platform.SDK\NLog.dll</HintPath>
       </Reference>
     </ItemGroup>
   
