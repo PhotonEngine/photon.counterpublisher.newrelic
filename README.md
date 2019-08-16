@@ -6,11 +6,10 @@
 
 1. Copy content of this repository to the root directory of your Photon Server SDK. Current tested version is v4-0-29-11263.
 2. Using Visual Studio, open "src-server\CounterPublisher.NewRelic\CounterPublisher.NewRelic.sln" solution.
-3. Update configuration in App.config.
-
-  - Make sure to change `senderId`, `agentName` and `licenseKey` values.
-  - `{0}`, if used inside `senderId` or `agentName`, will be replaced with the machine name.
-  - Optionally change `initialDelay` and `sendInterval`.
+3. Update configuration in App.config:
+   - Make sure to change `senderId`, `agentName` and `licenseKey` values.
+   - `{0}`, if used inside `senderId` or `agentName`, will be replaced with the machine name.
+   - Optionally change `initialDelay` and `sendInterval`.
 4. Build solution.
 5. Enable CounterPublisher.NewRelic plugin and configure it properly:
    The configuration files that need to be changed are (one per server application that needs counters):
