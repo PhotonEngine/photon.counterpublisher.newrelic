@@ -13,26 +13,25 @@
   - Optionally change `initialDelay` and `sendInterval`.
 4. Build solution.
 5. Enable CounterPublisher.NewRelic plugin and configure it properly:
+   The configuration files that need to be changed are (one per server application that needs counters):
+ 
+      - "deploy\CounterPublisher\bin\CounterPublisher.dll.config"
+      - "deploy\Loadbalancing\GameServer\bin\Photon.LoadBalancing.dll.config"
+      - "deploy\Loadbalancing\Master\bin\Photon.LoadBalancing.dll.config"
 
-  The configuration files that need to be changed are (one per server application that needs counters):
+   Use same values as step 3.
 
-  - "deploy\CounterPublisher\bin\CounterPublisher.dll.config"
-  - "deploy\Loadbalancing\GameServer\bin\Photon.LoadBalancing.dll.config"
-  - "deploy\Loadbalancing\Master\bin\Photon.LoadBalancing.dll.config"
+   What needs to be changed:
 
-  Use same values as step 3.
+      - Replace `<Photon><CounterPublisher ...><Sender ...` with something like below.
+      - Make sure to change `senderId`, `agentName` and `licenseKey` values.
+      - `{0}`, if used inside `senderId` or `agentName`, will be replaced with the machine name.
+      - Optionally change `initialDelay` and `sendInterval`.
 
-  What needs to be changed:
+   Before:
 
-  - Replace `<Photon><CounterPublisher ...><Sender ...` with something like below.
-  - Make sure to change `senderId`, `agentName` and `licenseKey` values.
-  - `{0}`, if used inside `senderId` or `agentName`, will be replaced with the machine name.
-  - Optionally change `initialDelay` and `sendInterval`.
-
-  Before:
-
-  ```
-    <Photon>
+      ```
+      <Photon>
       <CounterPublisher enabled="True" updateInterval="1">
         <Sender
           endpoint="udp://255.255.255.255:40001"
@@ -40,14 +39,14 @@
           initialDelay="10"
           sendInterval="10" />
       </CounterPublisher>
-    </Photon>
-  ```
+      </Photon>
+      ```
 
-  After:
+   After:
 
-  ```
-     <Photon>
-      <CounterPublisher enabled="True" senderType="ExitGames.Diagnostics.Configuration.NewRelicAgentSettings, CounterPublisher.NewRelic">
+      ```
+      <Photon>
+       <CounterPublisher enabled="True" senderType="ExitGames.Diagnostics.Configuration.NewRelicAgentSettings, CounterPublisher.NewRelic">
         <Sender
           protocol="ExitGames.Diagnostics.Monitoring.Protocol.NewRelic.Agent.NewRelicWriter, CounterPublisher.NewRelic"
           senderId="CHANGE_SENDER_ID"
@@ -61,8 +60,8 @@
           initialDelay="60"
           sendInterval="60" />
       </CounterPublisher>
-    </Photon>
-  ```
+     </Photon>
+     ```
 
 6. Restart Photon Server if needed.
 
