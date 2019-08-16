@@ -11,8 +11,8 @@
   - Make sure to change `senderId`, `agentName` and `licenseKey` values.
   - `{0}`, if used inside `senderId` or `agentName`, will be replaced with the machine name.
   - Optionally change `initialDelay` and `sendInterval`.
-3. Build solution.
-4. Enable CounterPublisher.NewRelic plugin and configure it properly:
+4. Build solution.
+5. Enable CounterPublisher.NewRelic plugin and configure it properly:
 
   The configuration files that need to be changed are (one per server application that needs counters):
 
@@ -64,7 +64,7 @@
     </Photon>
   ```
 
-4. Restart Photon Server.
+6. Restart Photon Server if needed.
 
 ## Enable Debugging
 
