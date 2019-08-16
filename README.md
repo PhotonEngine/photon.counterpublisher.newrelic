@@ -6,6 +6,11 @@
 
 1. Copy content of this repository to the root directory of your Photon Server SDK. Current tested version is v4-0-29-11263.
 2. Using Visual Studio, open "src-server\CounterPublisher.NewRelic\CounterPublisher.NewRelic.sln" solution.
+3. Update configuration in App.config.
+
+  - Make sure to change `senderId`, `agentName` and `licenseKey` values.
+  - `{0}`, if used inside `senderId` or `agentName`, will be replaced with the machine name.
+  - Optionally change `initialDelay` and `sendInterval`.
 3. Build solution.
 4. Enable CounterPublisher.NewRelic plugin and configure it properly:
 
@@ -15,12 +20,14 @@
   - "deploy\Loadbalancing\GameServer\bin\Photon.LoadBalancing.dll.config"
   - "deploy\Loadbalancing\Master\bin\Photon.LoadBalancing.dll.config"
 
+  Use same values as step 3.
+
   What needs to be changed:
 
-  Replace `<Photon><CounterPublisher ...><Sender ...` with something like below.
-  Make sure to change `senderId`, `agentName` and `licenseKey` values.
-  `{0}` will be replaced with the machine name.
-  Optionally change `initialDelay` and `sendInterval`.
+  - Replace `<Photon><CounterPublisher ...><Sender ...` with something like below.
+  - Make sure to change `senderId`, `agentName` and `licenseKey` values.
+  - `{0}`, if used inside `senderId` or `agentName`, will be replaced with the machine name.
+  - Optionally change `initialDelay` and `sendInterval`.
 
   Before:
 
